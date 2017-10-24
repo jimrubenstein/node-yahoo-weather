@@ -1,8 +1,7 @@
 "use strict";
+const sprintf = require('sprintf-js').sprintf;
 
-let httpClient = null;
 const baseUrl = "https://query.yahooapis.com/v1/public/yql";
-
 const PLACE_TYPES = {
 	CONTINENT: 29,
 	COUNTRY: 12,
@@ -17,17 +16,20 @@ const PLACE_TYPES = {
 	TIME_ZONE: 31,
 };
 
+let httpClient = null;
+
 function baseQuery() {
 	return 'SELECT * FROM weather.forecast WHERE woeid IN ( %s )';
 }
 
-function buildHttpClient() {
-	httpClient = require('../lib/HttpClient.js');
+function makeHttpClient() {
+	let httpClient = require('../lib/HttpClient');
+	return httpClient;
 }
 
 function getHttpClient() {
 	if ( ! httpClient) {
-		setHttpClient(buildHttpClient());
+		setHttpClient(makeHttpClient());
 	}
 
 	return httpClient;
@@ -35,7 +37,7 @@ function getHttpClient() {
 
 function getForLocation(location) {
 	let query = baseQuery();
-	let locationQuery = 'SELECT woeid FROM geo.places(1) WHERE text = \'' + location + '\'' AND placetype IN (' + [PLACE_TYPES.SUBURB, PLACE_TYPES.TOWN].join(',') + ')';
+	let locationQuery = 'SELECT woeid FROM geo.places(1) WHERE text = \'' + location + '\' AND placetype IN (' + [PLACE_TYPES.SUBURB, PLACE_TYPES.TOWN].join(',') + ')';
 
 	query = sprintf(query, locationQuery);
 
@@ -54,7 +56,7 @@ function getForZip(zip) {
 function getWeather(query, opts) {
 	return getHttpClient().get(baseUrl, {
 		q: query,
-		format: json,
+		format: 'json',
 	});
 }
 

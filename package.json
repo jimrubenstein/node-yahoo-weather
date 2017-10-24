@@ -7,6 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim Rubenstein",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.1"
+  },
+  "dependencies": {
+    "moment": "^2.19.1",
+    "request-promise-native": "^1.0.5",
+    "requestretry": "^1.12.2",
+    "sprintf-js": "^1.1.1"
+  }
 }
-

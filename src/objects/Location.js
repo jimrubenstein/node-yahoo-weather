@@ -11,3 +11,5 @@ class Location {
 		this.location = location;
 	}
 }
+
+module.exports = Location;

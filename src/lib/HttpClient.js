@@ -1,6 +1,6 @@
-const request = require('requestretry');
+const request = require('request-promise-native');
 
-function makeRequest(options) }
+function makeRequest(options) {
 	return request(options);
 }
 
@@ -11,6 +11,8 @@ module.exports = {
 			method: 'GET',
 			qs: data,
 			...opts
+		}).then( response => {
+			return JSON.parse(response);
 		});
 	}
 }
