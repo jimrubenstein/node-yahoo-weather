@@ -1,0 +1,12 @@
+{
+  "name": "yahoo-weather",
+  "version": "1.0.0",
+  "description": "API Wrapper for Yahoo Weather API. Supports postal lookup as well as city/town lookup.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jim Rubenstein",
+  "license": "MIT"
+}
+
