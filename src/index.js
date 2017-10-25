@@ -90,7 +90,7 @@ function makeForecastResponse(Weather) {
 			low: item.low,
 			condition: item.text,
 		};
-	}).slice(1, 5);
+	}).splice(1, 5);
 
 	return {
 		...makeBaseResponse(Weather),
