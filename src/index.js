@@ -30,8 +30,11 @@ function current(location, options) {
 function makeBaseResponse(Weather) {
 	return {
 		location: {
-			...Weather.query.results.channel.location
+			...Weather.query.results.channel.location,
+			lat: Weather.query.results.channel.item.lat,
+			long: Weather.query.results.channel.item.long,
 		},
+		units: Weather.query.results.channel.units,
 	};
 }
 
@@ -46,6 +49,11 @@ function makeCurrentResponse(Weather) {
 			wind: {
 				...Weather.query.results.channel.wind,
 			},
+
+			sunrise: Weather.query.results.channel.astronomy.sunrise,
+			sunset: Weather.query.results.channel.astronomy.sunset,
+
+			atmosphere: Weather.query.results.channel.atmosphere,
 		}
 	}
 }
