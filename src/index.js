@@ -44,8 +44,8 @@ function makeCurrentResponse(Weather) {
 		current: {
 			condition: Weather.query.results.channel.item.condition.text,
 			temp: Weather.query.results.channel.item.condition.temp,
-			high: Weather.query.results.channel.item.forecast.high,
-			low: Weather.query.results.channel.item.forecast.low,
+			high: Weather.query.results.channel.item.forecast[0].high,
+			low: Weather.query.results.channel.item.forecast[0].low,
 
 			date: moment( Weather.query.results.channel.item.condition.date, 'ddd, DD MMM YYYY hh:mm A z' ),
 
